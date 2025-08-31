@@ -258,8 +258,16 @@ const AdminDashboard = ({ user }) => {
       {/* Key Metrics */}
       <div className="grid grid-4" style={{ marginBottom: '32px' }}>
         <div className="stat-card">
-          <div className="stat-icon" style={{ background: '#dcfce7' }}>
-            💰
+          <div className="stat-icon" style={{ 
+            background: 'linear-gradient(135deg, #10b981 0%, #059669 100%)',
+            color: 'white',
+            fontSize: '24px',
+            fontWeight: 'bold',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center'
+          }}>
+            ₱
           </div>
           <div className="stat-value">₱{stats.totalRevenue.toLocaleString()}</div>
           <div className="stat-label">Total Revenue (Month)</div>
@@ -269,8 +277,18 @@ const AdminDashboard = ({ user }) => {
         </div>
 
         <div className="stat-card">
-          <div className="stat-icon" style={{ background: '#dbeafe' }}>
-            📊
+          <div className="stat-icon" style={{ 
+            background: 'linear-gradient(135deg, #3b82f6 0%, #2563eb 100%)',
+            color: 'white',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center'
+          }}>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+              <line x1="3" y1="9" x2="21" y2="9"/>
+              <line x1="9" y1="21" x2="9" y2="9"/>
+            </svg>
           </div>
           <div className="stat-value">{stats.activeBookings}</div>
           <div className="stat-label">Active Bookings</div>
@@ -280,8 +298,16 @@ const AdminDashboard = ({ user }) => {
         </div>
 
         <div className="stat-card">
-          <div className="stat-icon" style={{ background: '#fef3c7' }}>
-            🚌
+          <div className="stat-icon" style={{ 
+            background: 'linear-gradient(135deg, #f59e0b 0%, #d97706 100%)',
+            color: 'white',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center'
+          }}>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M18 11H6V6h12m-1.5 11a1.5 1.5 0 0 1-1.5-1.5 1.5 1.5 0 0 1 1.5-1.5 1.5 1.5 0 0 1 1.5 1.5 1.5 1.5 0 0 1-1.5 1.5m-9 0A1.5 1.5 0 0 1 6 15.5 1.5 1.5 0 0 1 7.5 14 1.5 1.5 0 0 1 9 15.5 1.5 1.5 0 0 1 7.5 17M4 16c0 .88.39 1.67 1 2.22V20a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1v-1h8v1a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1v-1.78c.61-.55 1-1.34 1-2.22V6c0-3.5-3.58-4-8-4s-8 .5-8 4v10Z"/>
+            </svg>
           </div>
           <div className="stat-value">{stats.operationalBuses}/{stats.totalBuses}</div>
           <div className="stat-label">Operational Buses</div>
@@ -291,8 +317,19 @@ const AdminDashboard = ({ user }) => {
         </div>
 
         <div className="stat-card">
-          <div className="stat-icon" style={{ background: '#fce7f3' }}>
-            👥
+          <div className="stat-icon" style={{ 
+            background: 'linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%)',
+            color: 'white',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center'
+          }}>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+              <circle cx="9" cy="7" r="4" />
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+              <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+            </svg>
           </div>
           <div className="stat-value">{stats.totalCustomers.toLocaleString()}</div>
           <div className="stat-label">Total Customers</div>
