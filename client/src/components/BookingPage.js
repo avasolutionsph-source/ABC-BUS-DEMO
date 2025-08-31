@@ -12,7 +12,20 @@ const BookingPage = () => {
     { id: 4, origin: 'Cebu', destination: 'Dumaguete', distance: 165, duration: '6 hours' },
     { id: 5, origin: 'Davao', destination: 'Cagayan de Oro', distance: 250, duration: '4 hours' },
     { id: 6, origin: 'Manila', destination: 'Batangas', distance: 110, duration: '2 hours' },
-    { id: 7, origin: 'Manila', destination: 'Tagaytay', distance: 60, duration: '1.5 hours' }
+    { id: 7, origin: 'Manila', destination: 'Tagaytay', distance: 60, duration: '1.5 hours' },
+    { id: 8, origin: 'Naga City', destination: 'Manila', distance: 377, duration: '8 hours' },
+    { id: 9, origin: 'Naga City', destination: 'Legazpi', distance: 85, duration: '2 hours' },
+    { id: 10, origin: 'Naga City', destination: 'Daet', distance: 75, duration: '1.5 hours' },
+    { id: 11, origin: 'Naga City', destination: 'Iriga City', distance: 35, duration: '45 minutes' },
+    { id: 12, origin: 'Naga City', destination: 'Sorsogon', distance: 110, duration: '2.5 hours' },
+    { id: 13, origin: 'Manila', destination: 'Naga City', distance: 377, duration: '8 hours' },
+    { id: 14, origin: 'Legazpi', destination: 'Naga City', distance: 85, duration: '2 hours' },
+    { id: 15, origin: 'Baguio', destination: 'Manila', distance: 245, duration: '5 hours' },
+    { id: 16, origin: 'Vigan', destination: 'Manila', distance: 400, duration: '7 hours' },
+    { id: 17, origin: 'Batangas', destination: 'Manila', distance: 110, duration: '2 hours' },
+    { id: 18, origin: 'Tagaytay', destination: 'Manila', distance: 60, duration: '1.5 hours' },
+    { id: 19, origin: 'Dumaguete', destination: 'Cebu', distance: 165, duration: '6 hours' },
+    { id: 20, origin: 'Cagayan de Oro', destination: 'Davao', distance: 250, duration: '4 hours' }
   ]);
   const [schedules, setSchedules] = useState([]);
   const [selectedSchedule, setSelectedSchedule] = useState(null);
