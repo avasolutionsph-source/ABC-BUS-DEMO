@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Icon } from './Icons';
 
 const AdminDashboard = ({ user }) => {
   const [showAIAssistant, setShowAIAssistant] = useState(false);
@@ -8,7 +7,7 @@ const AdminDashboard = ({ user }) => {
     { type: 'ai', text: 'Hello! I\'m your AI Business Assistant. I can help you with sales reports, bus tracking, fuel consumption analysis, and driver performance monitoring. How can I assist you today?' }
   ]);
   const [currentMessage, setCurrentMessage] = useState('');
-  const [stats, setStats] = useState({
+  const [stats] = useState({
     totalRevenue: 1256780,
     activeBookings: 234,
     totalBuses: 45,

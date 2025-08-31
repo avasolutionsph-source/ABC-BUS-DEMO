@@ -7,8 +7,6 @@ import * as THREE from 'three';
 
 // Bus Interior Component
 const BusInterior = () => {
-  const meshRef = useRef();
-  
   return (
     <group>
       {/* Bus Floor */}
@@ -140,7 +138,6 @@ const BusInterior = () => {
 
 // QR Scanner Device Component
 const QRScannerDevice = ({ scanning, validScan }) => {
-  const meshRef = useRef();
   const scannerRef = useRef();
   
   useFrame((state) => {
@@ -279,7 +276,7 @@ const BusScanner3D = () => {
   const [showQRReader, setShowQRReader] = useState(false);
   const [scanning, setScanning] = useState(false);
   const [validScan, setValidScan] = useState(false);
-  const [scannedData, setScannedData] = useState(null);
+  // const [scannedData, setScannedData] = useState(null);
   const [passengerCount, setPassengerCount] = useState(0);
   const [recentScans, setRecentScans] = useState([]);
 
@@ -293,8 +290,9 @@ const BusScanner3D = () => {
     
     return () => {
       // Cleanup - stop any active video streams
-      if (videoRef.current && videoRef.current.srcObject) {
-        const stream = videoRef.current.srcObject;
+      const video = videoRef.current;
+      if (video && video.srcObject) {
+        const stream = video.srcObject;
         const tracks = stream.getTracks();
         tracks.forEach(track => track.stop());
       }

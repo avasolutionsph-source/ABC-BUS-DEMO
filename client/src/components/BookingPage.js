@@ -164,7 +164,6 @@ const BookingPage = () => {
     const seats = [];
     const occupiedSeats = ['A3', 'B2', 'C5', 'D4', 'E1', 'F3', 'G2', 'H4', 'J3']; // Mock occupied seats
     const rows = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'];
-    const seatsPerRow = 4; // 2 on left, aisle, 2 on right
     
     // Generate bus seat layout with proper rows
     for (let rowIndex = 0; rowIndex < rows.length; rowIndex++) {

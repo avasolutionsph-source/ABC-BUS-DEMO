@@ -86,8 +86,8 @@ const AdminBusManagement = () => {
   ]);
 
   const [showAddModal, setShowAddModal] = useState(false);
-  const [showEditModal, setShowEditModal] = useState(false);
-  const [selectedBus, setSelectedBus] = useState(null);
+  // const [showEditModal, setShowEditModal] = useState(false);
+  // const [selectedBus, setSelectedBus] = useState(null);
   const [filterStatus, setFilterStatus] = useState('all');
   const [searchTerm, setSearchTerm] = useState('');
 
@@ -281,8 +281,9 @@ const AdminBusManagement = () => {
                 <div style={{ display: 'flex', gap: '8px' }}>
                   <button 
                     onClick={() => {
-                      setSelectedBus(bus);
-                      setShowEditModal(true);
+                      // setSelectedBus(bus);
+                      // setShowEditModal(true);
+                      toast.info('Edit functionality coming soon!');
                     }}
                     className="btn btn-secondary"
                     style={{ flex: 1, padding: '8px', fontSize: '0.875rem' }}

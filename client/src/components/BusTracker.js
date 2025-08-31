@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { MapContainer, TileLayer, Marker, Popup, Polyline, useMap } from 'react-leaflet';
 import L from 'leaflet';
-import axios from 'axios';
 import io from 'socket.io-client';
-import { toast } from 'react-toastify';
 
 // Fix for default markers in react-leaflet
 delete L.Icon.Default.prototype._getIconUrl;
@@ -27,7 +25,7 @@ const MapController = ({ center, zoom }) => {
 const BusTracker = () => {
   const [buses, setBuses] = useState([]);
   const [selectedBus, setSelectedBus] = useState(null);
-  const [busLocation, setBusLocation] = useState(null);
+  // const [busLocation, setBusLocation] = useState(null);
   const [socket, setSocket] = useState(null);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
@@ -512,6 +510,7 @@ const BusTracker = () => {
         newSocket.disconnect();
       }
     };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -520,7 +519,7 @@ const BusTracker = () => {
       
       socket.on('bus-location-update', (data) => {
         if (data.busId === selectedBus.id) {
-          setBusLocation(data.location);
+          // setBusLocation(data.location);
           // Update the bus in the buses array
           setBuses(prevBuses => 
             prevBuses.map(bus => 

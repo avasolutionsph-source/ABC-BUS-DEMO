@@ -1,8 +1,8 @@
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useRef, useEffect } from 'react';
 import { Canvas, useThree, useFrame } from '@react-three/fiber';
 import { OrbitControls as OrbitControlsImpl } from 'three/examples/jsm/controls/OrbitControls.js';
 import { Text, Cylinder } from '@react-three/drei';
-import * as THREE from 'three';
+// import * as THREE from 'three';
 import './Ticket3D.css';
 
 // Custom OrbitControls component

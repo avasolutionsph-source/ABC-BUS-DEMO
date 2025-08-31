@@ -1,5 +1,4 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Icon } from './Icons';
 
 const AIAssistant = () => {
   const [messages, setMessages] = useState([
