@@ -271,8 +271,8 @@ const BusTracker = () => {
       bus_number: 'ABC-001',
       route: 'Manila → Baguio',
       status: 'en_route',
-      current_lat: 15.3504,  // Between Tarlac and Urdaneta on actual route
-      current_lng: 120.6221,
+      current_lat: 15.4817,  // Fixed at Tarlac City (on route)
+      current_lng: 120.5979,
       departure_time: '06:00',
       estimated_arrival: '12:00',
       next_stop: 'Urdaneta',
@@ -309,8 +309,8 @@ const BusTracker = () => {
       bus_number: 'CEB-001',
       route: 'Cebu → Dumaguete',
       status: 'en_route',
-      current_lat: 9.8790,  // At Argao on actual route
-      current_lng: 123.6093,
+      current_lat: 10.1055,  // Fixed at Carcar City (on route)
+      current_lng: 123.6402,
       departure_time: '08:00',
       estimated_arrival: '12:00',
       next_stop: 'Bato Port',
@@ -366,7 +366,7 @@ const BusTracker = () => {
       bus_number: 'ABC-008',
       route: 'Manila → Legazpi',
       status: 'en_route',
-      current_lat: 13.6218,
+      current_lat: 13.6218,  // Fixed at Naga (on route)
       current_lng: 123.1948,
       departure_time: '04:00',
       estimated_arrival: '12:00',
@@ -423,8 +423,8 @@ const BusTracker = () => {
       bus_number: 'ABC-012',
       route: 'Manila → Caticlan (Boracay)',
       status: 'en_route',
-      current_lat: 13.1400,  // At Gumaca, Quezon on actual land route
-      current_lng: 121.4500,
+      current_lat: 14.0991,  // Fixed at Batangas (on route)
+      current_lng: 121.1506,
       departure_time: '22:00',
       estimated_arrival: '06:00',
       next_stop: 'Lopez',
@@ -442,8 +442,8 @@ const BusTracker = () => {
       bus_number: 'ABC-003',
       route: 'Manila → Baguio',
       status: 'en_route',
-      current_lat: 14.7584,  // At NLEX Balintawak
-      current_lng: 120.9963,
+      current_lat: 14.7302,  // Fixed at Meycauayan (on route)
+      current_lng: 120.9617,
       departure_time: '08:00',
       estimated_arrival: '14:00',
       next_stop: 'San Fernando',
@@ -461,8 +461,8 @@ const BusTracker = () => {
       bus_number: 'ABC-004',
       route: 'Quezon City → Tagaytay',
       status: 'en_route',
-      current_lat: 14.4101,  // At Muntinlupa
-      current_lng: 121.0494,
+      current_lat: 14.4224,  // Fixed at Alabang (on route)
+      current_lng: 121.0444,
       departure_time: '09:00',
       estimated_arrival: '11:00',
       next_stop: 'Tagaytay',
@@ -480,8 +480,8 @@ const BusTracker = () => {
       bus_number: 'ABC-005',
       route: 'Manila → Vigan',
       status: 'en_route',
-      current_lat: 16.3756,  // At San Fernando La Union
-      current_lng: 120.3173,
+      current_lat: 16.6162,  // Fixed at San Fernando LU (on route)
+      current_lng: 120.3176,
       departure_time: '05:00',
       estimated_arrival: '13:00',
       next_stop: 'Candon',
@@ -501,44 +501,45 @@ const BusTracker = () => {
     setBuses(sampleBuses);
     setLoading(false);
 
-    // Setup socket connection for real-time updates
-    const socketUrl = process.env.REACT_APP_SOCKET_URL || 'http://localhost:5000';
-    const newSocket = io(socketUrl);
-    setSocket(newSocket);
+    // Demo mode - no real-time updates, buses stay static
+    // const socketUrl = process.env.REACT_APP_SOCKET_URL || 'http://localhost:5000';
+    // const newSocket = io(socketUrl);
+    // setSocket(newSocket);
 
-    return () => {
-      if (newSocket) {
-        newSocket.disconnect();
-      }
-    };
+    // return () => {
+    //   if (newSocket) {
+    //     newSocket.disconnect();
+    //   }
+    // };
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  useEffect(() => {
-    if (socket && selectedBus) {
-      socket.emit('track-bus', selectedBus.id);
-      
-      socket.on('bus-location-update', (data) => {
-        if (data.busId === selectedBus.id) {
-          // setBusLocation(data.location);
-          // Update the bus in the buses array
-          setBuses(prevBuses => 
-            prevBuses.map(bus => 
-              bus.id === selectedBus.id 
-                ? { ...bus, current_lat: data.location.lat, current_lng: data.location.lng }
-                : bus
-            )
-          );
-        }
-      });
-    }
-
-    return () => {
-      if (socket) {
-        socket.off('bus-location-update');
-      }
-    };
-  }, [socket, selectedBus]);
+  // Demo mode - disabled real-time updates
+  // useEffect(() => {
+  //   if (socket && selectedBus) {
+  //     socket.emit('track-bus', selectedBus.id);
+  //     
+  //     socket.on('bus-location-update', (data) => {
+  //       if (data.busId === selectedBus.id) {
+  //         // setBusLocation(data.location);
+  //         // Update the bus in the buses array
+  //         setBuses(prevBuses => 
+  //           prevBuses.map(bus => 
+  //             bus.id === selectedBus.id 
+  //               ? { ...bus, current_lat: data.location.lat, current_lng: data.location.lng }
+  //               : bus
+  //           )
+  //         );
+  //       }
+  //     });
+  //   }
+  //
+  //   return () => {
+  //     if (socket) {
+  //       socket.off('bus-location-update');
+  //     }
+  //   };
+  // }, [socket, selectedBus]);
 
   const getStatusColor = (status) => {
     switch (status) {
