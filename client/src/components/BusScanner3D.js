@@ -322,14 +322,14 @@ const BusScanner3D = () => {
         };
         
         setRecentScans(prev => [scanRecord, ...prev].slice(0, 5));
-        setScannedData(qrData);
+        // setScannedData(qrData);
         
         toast.success(`✅ Valid Ticket: ${bookingRef}`);
         
         // Reset after 3 seconds
         setTimeout(() => {
           setValidScan(false);
-          setScannedData(null);
+          // setScannedData(null);
         }, 3000);
       } else {
         toast.error('❌ Invalid QR Code - Not an ABC Bus ticket');

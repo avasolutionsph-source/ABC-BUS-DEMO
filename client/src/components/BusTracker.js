@@ -575,7 +575,7 @@ const BusTracker = () => {
 
   const selectBus = (bus) => {
     setSelectedBus(bus);
-    setBusLocation({ lat: bus.current_lat, lng: bus.current_lng });
+    // setBusLocation({ lat: bus.current_lat, lng: bus.current_lng });
   };
 
   // Create custom bus icons for different statuses
