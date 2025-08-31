@@ -288,9 +288,11 @@ const BusScanner3D = () => {
     const reader = new BrowserQRCodeReader();
     setCodeReader(reader);
     
+    // Capture the video element reference at effect time
+    const video = videoRef.current;
+    
     return () => {
       // Cleanup - stop any active video streams
-      const video = videoRef.current;
       if (video && video.srcObject) {
         const stream = video.srcObject;
         const tracks = stream.getTracks();
