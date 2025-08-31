@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mkdir:*)",
+      "Bash(node server.js)",
+      "Bash(npm run dev:*)",
+      "Bash(npm start)",
+      "Bash(taskkill:*)",
+      "Bash(rm:*)",
+      "Bash(cmd /c:*)",
+      "Bash(npm uninstall:*)",
+      "Bash(start http://localhost:3000/scanner)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
