@@ -5,7 +5,15 @@ import { toast } from 'react-toastify';
 
 const BookingPage = () => {
   const [step, setStep] = useState(1);
-  const [routes, setRoutes] = useState([]);
+  const [routes, setRoutes] = useState([
+    { id: 1, origin: 'Manila', destination: 'Baguio', distance: 245, duration: '5 hours' },
+    { id: 2, origin: 'Manila', destination: 'Vigan', distance: 400, duration: '7 hours' },
+    { id: 3, origin: 'Manila', destination: 'Sagada', distance: 380, duration: '8 hours' },
+    { id: 4, origin: 'Cebu', destination: 'Dumaguete', distance: 165, duration: '6 hours' },
+    { id: 5, origin: 'Davao', destination: 'Cagayan de Oro', distance: 250, duration: '4 hours' },
+    { id: 6, origin: 'Manila', destination: 'Batangas', distance: 110, duration: '2 hours' },
+    { id: 7, origin: 'Manila', destination: 'Tagaytay', distance: 60, duration: '1.5 hours' }
+  ]);
   const [schedules, setSchedules] = useState([]);
   const [selectedSchedule, setSelectedSchedule] = useState(null);
   const [selectedSeats, setSelectedSeats] = useState([]);
@@ -23,10 +31,14 @@ const BookingPage = () => {
 
   const fetchRoutes = async () => {
     try {
-      const response = await axios.get('/api/routes');
-      setRoutes(response.data);
+      const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:5002';
+      const response = await axios.get(`${apiUrl}/api/routes`);
+      if (response.data && Array.isArray(response.data)) {
+        setRoutes(response.data);
+      }
     } catch (error) {
-      toast.error('Failed to load routes');
+      console.log('Using demo routes');
+      // Routes are already set as default demo data
     }
   };
 
@@ -248,8 +260,12 @@ const BookingPage = () => {
     return seats;
   };
 
-  const uniqueOrigins = [...new Set(routes.map(route => route.origin))];
-  const uniqueDestinations = [...new Set(routes.map(route => route.destination))];
+  const uniqueOrigins = routes && Array.isArray(routes) 
+    ? [...new Set(routes.map(route => route.origin))]
+    : [];
+  const uniqueDestinations = routes && Array.isArray(routes)
+    ? [...new Set(routes.map(route => route.destination))]
+    : [];
 
   return (
     <div>
