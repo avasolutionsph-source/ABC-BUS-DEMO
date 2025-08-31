@@ -502,7 +502,8 @@ const BusTracker = () => {
     setLoading(false);
 
     // Setup socket connection for real-time updates
-    const newSocket = io('http://localhost:5000');
+    const socketUrl = process.env.REACT_APP_SOCKET_URL || 'http://localhost:5000';
+    const newSocket = io(socketUrl);
     setSocket(newSocket);
 
     return () => {

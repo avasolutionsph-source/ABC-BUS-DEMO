@@ -10,10 +10,17 @@ const { v4: uuidv4 } = require('uuid');
 
 const app = express();
 const server = http.createServer(app);
+
+// Configure CORS for production
+const corsOrigins = process.env.NODE_ENV === 'production' 
+  ? ['https://abc-bus-demo.netlify.app'] 
+  : ['http://localhost:3000'];
+
 const io = socketIo(server, {
   cors: {
-    origin: "http://localhost:3000",
-    methods: ["GET", "POST"]
+    origin: corsOrigins,
+    methods: ["GET", "POST"],
+    credentials: true
   }
 });
 
@@ -21,7 +28,10 @@ const PORT = process.env.PORT || 5002;
 const JWT_SECRET = process.env.JWT_SECRET || 'abc-bus-secret-key';
 
 // Middleware
-app.use(cors());
+app.use(cors({
+  origin: corsOrigins,
+  credentials: true
+}));
 app.use(express.json());
 app.use(express.static('public'));
 
@@ -650,8 +660,19 @@ io.on('connection', (socket) => {
   });
 });
 
-server.listen(PORT, () => {
+// Health check endpoint for Render
+app.get('/health', (req, res) => {
+  res.status(200).json({ 
+    status: 'healthy',
+    timestamp: new Date().toISOString(),
+    environment: process.env.NODE_ENV || 'development'
+  });
+});
+
+server.listen(PORT, '0.0.0.0', () => {
   console.log(`ABC Bus Server running on port ${PORT}`);
+  console.log(`Environment: ${process.env.NODE_ENV || 'development'}`);
+  console.log(`CORS enabled for: ${corsOrigins.join(', ')}`);
 });
 
 process.on('SIGINT', () => {
